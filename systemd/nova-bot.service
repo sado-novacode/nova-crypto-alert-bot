@@ -1,0 +1,17 @@
+[Unit]
+Description=Nova — Crypto Alert Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_LINUX_USER
+WorkingDirectory=/opt/nova-bot
+# .env lives in /opt/nova-bot/.env
+EnvironmentFile=/opt/nova-bot/.env
+ExecStart=/opt/nova-bot/.venv/bin/python run.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
